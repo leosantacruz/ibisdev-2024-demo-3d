@@ -32,7 +32,7 @@ export default function Home() {
         strategy="beforeInteractive"
       ></Script>
 
-      <div className="max-w-[1000px] mx-auto grid grid-cols-1  configurator-container">
+      <div className=" mx-auto grid grid-cols-1  configurator-container">
         <div className="w-full" href="#0">
           <iframe
             title=""

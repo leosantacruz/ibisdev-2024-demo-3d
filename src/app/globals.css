@@ -2,6 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
+html {
+  background-color: black;
+}
+
 :root {
   --foreground-rgb: 0, 0, 0;
   --background-start-rgb: 214, 219, 220;
@@ -50,10 +54,6 @@ input:checked ~ span:last-child {
 }
 
 .configurator-container {
-  border-top-left-radius: 2rem;
-  border-top-right-radius: 2rem;
-  border-bottom-left-radius: 0;
-  border-bottom-right-radius: 0;
   overflow: hidden;
 }
 
@@ -62,10 +62,6 @@ input:checked ~ span:last-child {
   .custom-iframe {
     width: 100%; /* Largeur pour la version desktop */
     height: 503px; /* Hauteur pour la version desktop */
-    border-top-left-radius: 0;
-    border-top-right-radius: 0;
-    border-bottom-left-radius: 2rem;
-    border-bottom-right-radius: 0;
   }
 }
 

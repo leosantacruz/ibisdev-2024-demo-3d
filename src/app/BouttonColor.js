@@ -6,12 +6,12 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPalette, faQrcode } from '@fortawesome/free-solid-svg-icons';
 
 const colorOptions = [
-  { label: 'French Racing Blue', color: [0.08, 0.24, 0.38] },
-  { label: 'Italian Red', color: [0.71, 0.13, 0.18] },
-  { label: 'Fierce Green', color: [0.0, 0.5, 0.0] },
-  { label: 'Chairman Blue', color: [0.0, 0.33, 0.71] },
-  { label: 'Lorelin Violet', color: [0.36, 0.23, 0.43] },
-  { label: 'Wallace Blue', color: [0.0, 0.25, 0.38] }
+  { color: [181, 33, 45] },
+  { color: [0, 46, 166, 1] },
+  { color: [36, 179, 0, 1] },
+  { color: [210, 0, 151, 1] },
+  { color: [238, 200, 1, 1] },
+  { color: [213, 0, 247, 1] },
 ];
 
 function ButtonColor() {
@@ -67,8 +67,8 @@ function ButtonColor() {
             carColorMaterial.channels.AlbedoPBR.color = [53 / 255 * 0.6, 224 / 255 * 0.6, 190 / 255 * 0.6];
             seatColorMaterial.channels.AlbedoPBR.color = [0 / 255 * 0.6, 22 / 255 * 0.6, 46 / 255 * 0.6];
 
-            instance.setMaterial(carColorMaterial);
-            instance.setMaterial(seatColorMaterial);
+            // instance.setMaterial(carColorMaterial);
+            // instance.setMaterial(seatColorMaterial);
           })
 
 
@@ -131,7 +131,7 @@ function ButtonColor() {
         if (!err) {
           materials.forEach((materialToUpdate) => {
             if (materialToUpdate.name === 'Color') {
-              materialToUpdate.channels.AlbedoPBR.color = color;
+              materialToUpdate.channels.AlbedoPBR.color = [convertRGBtoLinear(color[0]), convertRGBtoLinear(color[1]), convertRGBtoLinear(color[2])];
               api.setMaterial(materialToUpdate, () => {
               });
             }
@@ -149,11 +149,21 @@ function ButtonColor() {
     setQRCodeVisible(!qrCodeVisible);
   };
 
+  function convertRGBtoLinear(color) {
+    let value = color / 255;
+    if (value <= 0 && value <= 0.04045) {
+      return value / 12.92;
+    } else {
+      return ((value + 0.055) / 1.055) ** 2.4;
+    }
+  }
+
+
   return (
     <div className='relative bg-[#07172d]  items-center h-full'>
 
 
-      <div className="flex gap-10 items-center flex-row  text-white text-[16px] justify-between p-5  h-[100px]">
+      <div className="flex gap-10 items-center flex-row  text-white text-[16px] justify-between p-10  h-[120px]">
         <div className='flex items-center flex-row md:flex-col cursor-pointer gap-3'>
           <label className='flex items-center relative w-max cursor-pointer select-none'>
             <input
@@ -167,12 +177,11 @@ function ButtonColor() {
           <p className='text-xs uppercase'>Touring pack</p>
         </div>
 
-        <div className="flex  flex-row  gap-10">
+        <div className="flex flex-row gap-10">
           <div className='flex flex-col items-center cursor-pointer' onClick={toggleColorMenu}>
             <img src="/images/icon-color.svg" alt="" />
             <p className='mt-2 text-xs uppercase hidden md:block'>Color</p>
           </div>
-
 
           <div className='flex flex-col items-center cursor-pointer' onClick={toggleQRCode}>
             <img src="/images/icon-AR.svg" alt="" />
@@ -192,13 +201,13 @@ function ButtonColor() {
 
 
 
-      <div className={`absolute w-full h-24 bottom-[99px] grid grid-cols-6  overflow-hidden transition-all ${colorMenuVisible ? "h-[50px]" : "h-[0px]"}`}>
+      <div className={`absolute w-full h-24 bottom-[119px] grid grid-cols-6  overflow-hidden transition-all ${colorMenuVisible ? "h-[50px]" : "h-[0px]"}`}>
         {colorOptions.map(option => (
 
           <div
             className='h-24 -24 cursor-pointer hover:opacity-70'
             style={{
-              backgroundColor: `rgba(${option.color[0] * 255}, ${option.color[1] * 255}, ${option.color[2] * 255}, 1)`,
+              backgroundColor: `rgba(${option.color[0]}, ${option.color[1]}, ${option.color[2]}, 1)`,
             }}
             onClick={() => {
               changeColor(option.color);
@@ -210,7 +219,7 @@ function ButtonColor() {
 
 
 
-      <div className={`absolute w-full  bottom-[99px] overflow-hidden transition-all flex items-center justify-center bg-[#07172d] ${qrCodeVisible ? "h-[500px]" : "h-[0px]"}`}>
+      <div className={`absolute w-full  bottom-[119px] overflow-hidden transition-all flex items-center justify-center bg-[#07172d] ${qrCodeVisible ? "h-[510px]" : "h-[0px]"}`}>
 
         <div className="">
           <h2 className='mb-1 text-lg font-semibold text-white'>Scan this QR code</h2>
