@@ -1,0 +1,92 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --foreground-rgb: 0, 0, 0;
+  --background-start-rgb: 214, 219, 220;
+  --background-end-rgb: 255, 255, 255;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --foreground-rgb: 255, 255, 255;
+    --background-start-rgb: 0, 0, 0;
+    --background-end-rgb: 0, 0, 0;
+  }
+}
+
+input:checked ~ span:last-child {
+  --tw-translate-x: 1.75rem; /* translate-x-7 */
+}
+
+.viewer .controls {
+  position: none;
+}
+
+.rounded-color {
+  border-top-left-radius: 0.25rem;
+  border-bottom-left-radius: 0.25rem;
+  border-bottom-right-radius: 0.25rem;
+  border-top-right-radius: 0.25rem;
+}
+
+.h-selection {
+  max-height: 503em;
+}
+
+.listColors {
+  grid-column-gap: 10px;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  padding: 10px;
+}
+
+/* Dans votre fichier CSS personnalisé */
+
+.custom-iframe {
+  width: 100%;
+  height: 300px; /* Hauteur automatique pour la version mobile */
+}
+
+.configurator-container {
+  border-top-left-radius: 2rem;
+  border-top-right-radius: 2rem;
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+  overflow: hidden;
+}
+
+@media (min-width: 768px) {
+  /* Taille d'écran à partir de laquelle la version desktop commence */
+  .custom-iframe {
+    width: 100%; /* Largeur pour la version desktop */
+    height: 503px; /* Hauteur pour la version desktop */
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+    border-bottom-left-radius: 2rem;
+    border-bottom-right-radius: 0;
+  }
+}
+
+.bt-mobile {
+  width: 304px; /* Largeur pour la version mobile */
+  height: 250px; /* Hauteur automatique pour la version mobile */
+
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+  border-bottom-left-radius: 2rem;
+  border-bottom-right-radius: 2rem;
+}
+
+@media (min-width: 768px) {
+  /* Taille d'écran à partir de laquelle la version desktop commence */
+  .bt-mobile {
+    width: 200px; /* Largeur pour la version desktop */
+    height: 503px; /* Hauteur pour la version desktop */
+    border-top-left-radius: 0;
+    border-top-right-radius: 2rem;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+  }
+}
