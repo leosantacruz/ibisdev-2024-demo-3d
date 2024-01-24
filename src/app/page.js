@@ -26,14 +26,14 @@ export default function Home() {
   }, []);
 
   return (
-    <div className="">
+    <>
       <Script
         src="https://static.sketchfab.com/api/sketchfab-viewer-1.10.1.js"
         strategy="beforeInteractive"
       ></Script>
 
-      <div className=" mx-auto grid grid-cols-1  configurator-container">
-        <div className="w-full" href="#0">
+      <div className="configurator-container">
+        <div className="w-full flex flex-row h-full" href="#0">
           <iframe
             title=""
             className='custom-iframe '
@@ -44,7 +44,7 @@ export default function Home() {
           <BouttonColor />
         </div>
       </div>
-    </div>
+    </>
   );
 }
 

@@ -2,8 +2,6 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import './globals.css';
 import QRCode from 'qrcode.react';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faPalette, faQrcode } from '@fortawesome/free-solid-svg-icons';
 
 const colorOptions = [
   { color: [181, 33, 45] },
@@ -201,11 +199,11 @@ function ButtonColor() {
 
 
 
-      <div className={`absolute w-full h-24 bottom-[119px] grid grid-cols-6  overflow-hidden transition-all ${colorMenuVisible ? "h-[50px]" : "h-[0px]"}`}>
+      <div className={`absolute w-full h-24 bottom-[119px] grid grid-cols-6  overflow-hidden transition-all ${colorMenuVisible ? "h-[40px]" : "h-[0px]"}`}>
         {colorOptions.map(option => (
 
           <div
-            className='h-24 -24 cursor-pointer hover:opacity-70'
+            className='cursor-pointer hover:contrast-150'
             style={{
               backgroundColor: `rgba(${option.color[0]}, ${option.color[1]}, ${option.color[2]}, 1)`,
             }}
@@ -219,7 +217,7 @@ function ButtonColor() {
 
 
 
-      <div className={`absolute w-full  bottom-[119px] overflow-hidden transition-all flex items-center justify-center bg-[#07172d] ${qrCodeVisible ? "h-[510px]" : "h-[0px]"}`}>
+      <div className={`absolute w-full  bottom-[119px] overflow-hidden transition-all flex items-center justify-center bg-[#07172d] ${qrCodeVisible ? "h-[calc(100vh-118px)]" : "h-[0px]"}`}>
 
         <div className="">
           <h2 className='mb-1 text-lg font-semibold text-white'>Scan this QR code</h2>

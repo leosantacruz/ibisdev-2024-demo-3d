@@ -5,6 +5,9 @@
 html {
   background-color: black;
 }
+body {
+  height: 100vh;
+}
 
 :root {
   --foreground-rgb: 0, 0, 0;
@@ -46,43 +49,18 @@ input:checked ~ span:last-child {
   padding: 10px;
 }
 
-/* Dans votre fichier CSS personnalisé */
-
 .custom-iframe {
   width: 100%;
-  height: 300px; /* Hauteur automatique pour la version mobile */
 }
 
 .configurator-container {
+  height: 100vh;
   overflow: hidden;
-}
-
-@media (min-width: 768px) {
-  /* Taille d'écran à partir de laquelle la version desktop commence */
-  .custom-iframe {
-    width: 100%; /* Largeur pour la version desktop */
-    height: 503px; /* Hauteur pour la version desktop */
-  }
+  display: grid;
+  grid-template-rows: 1fr 120px;
 }
 
 .bt-mobile {
   width: 304px; /* Largeur pour la version mobile */
   height: 250px; /* Hauteur automatique pour la version mobile */
-
-  border-top-left-radius: 0;
-  border-top-right-radius: 0;
-  border-bottom-left-radius: 2rem;
-  border-bottom-right-radius: 2rem;
-}
-
-@media (min-width: 768px) {
-  /* Taille d'écran à partir de laquelle la version desktop commence */
-  .bt-mobile {
-    width: 200px; /* Largeur pour la version desktop */
-    height: 503px; /* Hauteur pour la version desktop */
-    border-top-left-radius: 0;
-    border-top-right-radius: 2rem;
-    border-bottom-left-radius: 0;
-    border-bottom-right-radius: 0;
-  }
 }
